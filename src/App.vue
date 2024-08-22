@@ -77,6 +77,17 @@ function set_mode(mode: string) {
   balance_mode.value = mode;
   compute();
 }
+
+function save() {
+  amount.value = 0;
+  etfs.value.forEach((item) => {
+    item.current_pos = item.target_pos;
+    item.target_pos = 0;
+    item.pos_diff = 0;
+    item.after_percent = 0;
+  });
+  compute();
+}
 </script>
 
 <template>
@@ -86,6 +97,7 @@ function set_mode(mode: string) {
     <input @input="compute" type="number" v-model="amount" placeholder="本次操作金额">&nbsp;
     <button @click="set_mode('re')" :disabled="balance_mode == 're'">再平衡</button>&nbsp;
     <button @click="set_mode('eq')" :disabled="balance_mode == 'eq'">平均分配</button>&nbsp;
+    <button @click="save">记录操作</button>&nbsp;
     <table>
       <thead>
         <tr>
