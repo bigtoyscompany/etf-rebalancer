@@ -81,7 +81,7 @@ function set_mode(mode: string) {
 
 <template>
   <div>
-    <h1>ETF 再平衡工具</h1>
+    <h1>ETF 再平衡计算器</h1>
     <button @click="etfs.push({} as any)">新增 ETF</button>&nbsp;
     <input @input="compute" type="number" v-model="amount" placeholder="本次操作金额">&nbsp;
     <button @click="set_mode('re')" :disabled="balance_mode == 're'">再平衡</button>&nbsp;
